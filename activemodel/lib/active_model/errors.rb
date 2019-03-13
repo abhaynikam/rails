@@ -478,6 +478,10 @@ module ActiveModel
     # * <tt>errors.attributes.title.blank</tt>
     # * <tt>errors.messages.blank</tt>
     def generate_message(attribute, type = :invalid, options = {})
+      # attribute = title
+      # type = taken
+      # options[:value] = "title"
+      puts "===="
       type = options.delete(:message) if options[:message].is_a?(Symbol)
       value = (attribute != :base ? @base.send(:read_attribute_for_validation, attribute) : nil)
 
@@ -506,10 +510,10 @@ module ActiveModel
 
       defaults << :"errors.attributes.#{attribute}.#{type}"
       defaults << :"errors.messages.#{type}"
-
       key = defaults.shift
       defaults = options.delete(:message) if options[:message]
       options[:default] = defaults
+      puts options[:default]
 
       I18n.translate(key, options)
     end
