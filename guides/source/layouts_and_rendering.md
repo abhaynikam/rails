@@ -201,7 +201,7 @@ The `render` method can do without a view completely, if you're willing to use t
 render inline: "<% products.each do |p| %><p><%= p.name %></p><% end %>"
 ```
 
-WARNING: There is seldom any good reason to use this option. Mixing ERB into your controllers defeats the MVC orientation of Rails and will make it harder for other developers to follow the logic of your project. Use a separate erb view instead.
+WARNING: There is seldom any good reason to use this option. Mixing ERB into your controllers defeats the MVC orientation of Rails and will make it harder for other developers to follow the logic of your project. Use a separate ERB view instead.
 
 By default, inline rendering uses ERB. You can force it to use Builder instead with the `:type` option:
 
@@ -421,7 +421,7 @@ If a template with the specified format does not exist an `ActionView::MissingTe
 ##### The `:variants` Option
 
 This tells Rails to look for template variations of the same format.
-You can specify a list of variants by passing the `:variants` option with a symbol or an array. 
+You can specify a list of variants by passing the `:variants` option with a symbol or an array.
 
 An example of use would be this.
 
@@ -448,11 +448,11 @@ end
 private
 
 def determine_variant
-  variant = nil 
+  variant = nil
   # some code to determine the variant(s) to use
   variant = :mobile if session[:use_mobile]
-  
-  variant    
+
+  variant
 end
 ```
 
