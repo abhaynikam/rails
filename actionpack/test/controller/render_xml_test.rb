@@ -35,7 +35,7 @@ class RenderXmlTest < ActionController::TestCase
     def formatted_xml_erb
     end
 
-    def render_xml_with_custom_content_type
+    def render_xml_with_custom_media_type
       render xml: "<blah/>", content_type: "application/atomsvc+xml"
     end
 
@@ -90,12 +90,12 @@ class RenderXmlTest < ActionController::TestCase
     assert_equal "<test>passed formatted xml erb</test>", @response.body
   end
 
-  def test_should_render_xml_but_keep_custom_content_type
-    get :render_xml_with_custom_content_type
+  def test_should_render_xml_but_keep_custom_media_type
+    get :render_xml_with_custom_media_type
     assert_equal "application/atomsvc+xml", @response.media_type
   end
 
-  def test_should_use_implicit_content_type
+  def test_should_use_implicit_media_type
     get :implicit_content_type, format: "atom"
     assert_equal Mime[:atom], @response.media_type
   end
